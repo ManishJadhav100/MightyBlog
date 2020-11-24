@@ -1,10 +1,10 @@
 {
   "params":
   {
-    "local_server":"True",
-    "local_uri": "mysql://root:qwerty@localhost/mightyblog",
-    "gmail-user":"manishjadhav100@gmail.com",
-    "gmail-password":"Manya@004"
+    "local_server":"",
+    "local_uri": "",
+    "gmail-user":"",
+    "gmail-password":""
   }
 
 }
