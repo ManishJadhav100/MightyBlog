@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signup Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href={{url_for('static',filename="fonts/material-icon/css/material-design-iconic-font.min.css")}}>
+
+    <!-- Main css -->
+    <link rel="stylesheet" href={{url_for('static',filename="css/style.css")}}>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+	<link href={{url_for('static',filename="css/templatemo-style.css")}} rel="stylesheet" />
+</head>
+<body>
+<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src={{url_for('static',filename="img/hd-wallpapers-43.jpg")}}>
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src={{url_for('static',filename="img/simple-house-logo.png")}} alt="Logo" class="tm-site-logo" />
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Mighty Blog</h1>
+								<h6 class="tm-site-description">Create Your Own Blogs</h6>
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
+								<li class="tm-nav-li"><a href="/about" class="tm-nav-link">About</a></li>
+								<li class="tm-nav-li"><a href="/contact" class="tm-nav-link">Contact</a></li>
+<!--								<li class="tm-nav-li"><a href="/register" class="tm-nav-link">Register</a></li>-->
+								<li class="tm-nav-li"><a href="/blogs" class="tm-nav-link">All Blogs</a></li>
+								<li class="tm-nav-li"><a href="/my-blogs" class="tm-nav-link">My Blogs</a></li>
+								<li class="tm-nav-li"><a href="/" class="tm-nav-link">Logout</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+{% block content %}
+  {% include "messages.html" %}
+  {% block sub_content %}
+  {% endblock %}
+{% endblock %}
+{% if my_blogs %}
+    <table cellpadding="5" >
+    {% for my_blog in my_blogs %}
+      <tr>
+        <td style="padding:0 15px;"> <h3> <a href="/blogs/{{ my_blog['blog_id'] }}">{{my_blog['title']}} </a> </h3></td>
+        <td style="padding:0 15px;"> <a href="/edit-blog/{{ my_blog['blog_id'] }}" class="btn btn-primary">Edit</a></td>
+        <td style="padding:0 15px;"> <a href="/delete-blog/{{ my_blog['blog_id'] }}" class="btn btn-danger">Delete</a></td>
+      </tr>
+    {% endfor %}
+    </table>
+  {% else %}
+    <h3>No blogs have been written by you</h3>
+  {% endif %}
+</body>
+</html>
